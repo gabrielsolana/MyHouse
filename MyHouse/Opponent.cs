@@ -20,12 +20,13 @@ namespace MyHouse
                 var location = myLocation as IHasExteriorDoor;
                 if (random.Next(2) == 1)
                     myLocation = location.DoorLocation;
-                myLocation = myLocation.Exits[random.Next(myLocation.Exits.Length - 1)];
-                if (myLocation is IHidingPlace)
-                    return;
-                else
-                    Move();
             }
+
+            myLocation = myLocation.Exits[random.Next(myLocation.Exits.Length - 1)];
+            if (myLocation is IHidingPlace)
+                return;
+            else
+                Move();
         }
 
         public bool Check(Location location)
