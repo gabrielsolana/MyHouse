@@ -79,9 +79,6 @@ namespace MyHouse
 
                 goThroughTheDoorButton.Text = $@"Atraviesa {location.DoorDescription}";
             }
-
-            
-
         }
 
         private void goHereButton_Click(object sender, EventArgs e)
@@ -97,6 +94,11 @@ namespace MyHouse
                
                 MoveToANewLocation(location.DoorLocation);
             }
+        }
+
+        private void exitsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

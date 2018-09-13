@@ -61,6 +61,7 @@
             this.exitsComboBox.Name = "exitsComboBox";
             this.exitsComboBox.Size = new System.Drawing.Size(368, 21);
             this.exitsComboBox.TabIndex = 2;
+            this.exitsComboBox.SelectedIndexChanged += new System.EventHandler(this.exitsComboBox_SelectedIndexChanged);
             // 
             // goThroughTheDoorButton
             // 
