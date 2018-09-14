@@ -1,9 +1,10 @@
 ﻿namespace MyHouse
 {
-    public class RoomWithHidingPlace : RoomWithDoor, IHidingPlace
+    public class RoomWithHidingPlace : Room, IHidingPlace
     {
-        public RoomWithHidingPlace(string name, string decoration, string doorDescription) : base(name, decoration, doorDescription)
+        public RoomWithHidingPlace(string name, string decoration, string hidingPlace) : base(name, decoration)
         {
+            HidingPlace = hidingPlace;
         }
 
         public string HidingPlace { get; }
