@@ -8,5 +8,15 @@
         }
 
         public string HidingPlace { get; }
+
+        public override string Description
+        {
+            get
+            {
+                return base.Description + $". Alguien podría esconderse en {HidingPlace}";
+            }
+        }
+       
+        
     }
 }

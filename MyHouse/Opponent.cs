@@ -4,34 +4,40 @@ namespace MyHouse
 {
     public class Opponent
     {
-        private Location myLocation;
-        private Random random;
-
         public Opponent(Location startingLocation)
         {
             this.myLocation = startingLocation;
             random = new Random();
         }
 
+        private Location myLocation;
+        private Random random;
+
         public void Move()
         {
-            if (myLocation is IHasExteriorDoor)
-            {
-                var location = myLocation as IHasExteriorDoor;
-                if (random.Next(2) == 1)
-                    myLocation = location.DoorLocation;
-            }
+            bool hidden = false;
 
-            myLocation = myLocation.Exits[random.Next(myLocation.Exits.Length - 1)];
-            if (myLocation is IHidingPlace)
-                return;
-            else
-                Move();
+            while (!hidden)
+            {
+                if (myLocation is IHasExteriorDoor)
+                {
+                    var locationWithDoor = myLocation as IHasExteriorDoor;
+                    if (random.Next(2) == 1)
+                        myLocation = locationWithDoor.DoorLocation;
+                }
+
+                int randomExit = random.Next(myLocation.Exits.Length - 1);
+                myLocation = myLocation.Exits[randomExit];
+
+                if (myLocation is IHidingPlace)
+                    hidden = true;
+            }
+           
         }
 
-        public bool Check(Location location)
+        public bool Check(Location locationToCheck)
         {
-            return myLocation == location;
+            return myLocation == locationToCheck;
         }
     }
 }
